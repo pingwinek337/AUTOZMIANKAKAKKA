@@ -12,18 +12,27 @@ public class RerollConfig {
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 	private static final Path PATH = FabricLoader.getInstance().getConfigDir().resolve("autoreroll.json");
 
-	/** Dolna granica zakresu zatrzymania (%). */
-	public double min = 47.0;
-	/** Gorna granica zakresu zatrzymania (%). */
-	public double max = 50.0;
+	/** Zakres zatrzymania w pelnych procentach. */
+	public int min = 47;
+	public int max = 50;
 	/** Odstep miedzy kliknieciami w tickach (20 = 1 sekunda). */
 	public int delayTicks = 6;
 	/** Maksymalna liczba rolli, 0 = bez limitu. */
 	public int maxRolls = 0;
-	/** Numer slotu miecza w Twoim ekwipunku (0-8 hotbar, 9-35 ekwipunek), -1 = nie ustawiono. */
-	public int swordIndex = -1;
-	/** Numer slotu zmianki (przedmiotu do rolowania) w Twoim ekwipunku, -1 = nie ustawiono. */
-	public int scrollIndex = -1;
+
+	/** Slot miecza: swordPlayer = true -> numer w Twoim ekwipunku, false -> numer slotu w oknie serwera. */
+	public boolean swordPlayer = false;
+	public int swordSlot = -1;
+	public String swordName = "";
+
+	/** Slot zmianki, jak wyzej. */
+	public boolean scrollPlayer = false;
+	public int scrollSlot = -1;
+	public String scrollName = "";
+
+	/** true = zmianke bierzemy prawym przyciskiem myszy, false = lewym. */
+	public boolean rightClickPickup = true;
+
 	/** Regex wyciagajacy procent z nazwy i opisu miecza. Grupa 1 = liczba. */
 	public String percentRegex = "obra.enia\\s*(\\d+(?:[.,]\\d+)?)\\s*%";
 
